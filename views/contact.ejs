@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- awesone fonts css-->
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <!-- owl carousel css-->
+    <link rel="stylesheet" href="owl-carousel/assets/owl.carousel.min.css" type="text/css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Rashiv Cloud Solutions</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light bg-transparent" id="gtco-main-nav">
+    <div class="container"><a class="navbar-brand"></a>
+        <button class="navbar-toggler" data-target="#my-nav" onclick="myFunction(this)" data-toggle="collapse"><span
+                class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span></button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <img class="rashiv-nav-logo" src="images/rashiv_logo-blue.png" alt="logo"></img>
+                <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+                <div class="gtco-navbar" id="gtco-navbar">
+                    <div class="gtco-dropdown" id="gtco-dropdown">
+                        <li class="nav-item"><a class="nav-link gtco-dropbtn" href="./courseslist.html">Courses<i class="fa fa-caret-down"></i></a></li>
+                        <div class="gtco-dropdown-content">
+                            <div class="gtco-header row">
+                                <h5>Our Courses</h5>
+                            </div>
+                            <div class="gtco-column row">
+                                <ul>
+                                    <li><a href="./courseslist.html#aws-courses">Amazon Web Services</a></li>
+                                    <li><a href="./courseslist.html#gcp-courses">Google Cloud Platform</a></li>
+                                    <li><a href="./courseslist.html#azure-courses">Microsoft Azure</a></li>
+                                    <li><a href="./courseslist.html#behavioral">Behavioral Training</a></li>
+                                    <li><a href="./courseslist.html#soft-skills">Soft Skills Training</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <li class="nav-item"><a class="nav-link" href="./index.html#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="./index.html#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="./blogs.html">Blogs</a></li>
+                <li class="nav-item"><a class="nav-link" href="./careers.html">Careers</a></li>
+                <li class="nav-item"><a class="nav-link" href="./contact.html">Contact Us</a></li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a href="./login.html" class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">login</a>
+                <a href="./register.html" class="btn btn-info my-2 my-sm-0 text-uppercase text-dark">sign up</a>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid gtco-banner-area">
+    <div class="container">
+        <div class="row">
+            <form action="" method="POST" class="col-lg-6" id="gtco-form" autocomplete="on">
+                <img class="rashiv-logo" src="images/rashiv_logo-blue.png" alt="logo"></img>
+                <h2 class="margin-40"> Contact Us </h2>
+                <input name="full_name" type="text" class="form-control" placeholder="Full Name" required>
+                <input name="email" type="email" class="form-control" placeholder="Email Address" required>
+                <input name="phone" type="tel" class="form-control" placeholder="Phone number (optional)">
+                <div class="multiselect">
+                    <div class="selectBox" onclick="showCheckboxes()">
+                        <select class="course-select">
+                            <option>Interested course types (optional)</option>
+                        </select>
+                        <div class="overSelect"></div>
+                    </div>
+                    <div id="checkboxes">
+                        <label for="one">
+                            <input name="aws" type="checkbox" id="one" />Amazon Web Services</label>
+                        <label for="two">
+                            <input name="gcp" type="checkbox" id="two" />Google Cloud Platform</label>
+                        <label for="three">
+                            <input name="azure" type="checkbox" id="three" />Microsoft Azure</label>
+                        <label for="four">
+                            <input name="behavioral" type="checkbox" id="four" />Behavioral Training</label>
+                        <label for="five">
+                            <input name="soft_skills" type="checkbox" id="five" />Soft Skills Training</label>
+                    </div>
+                </div>
+                <textarea name="message" class="form-control" placeholder="Message" required></textarea>
+                <button id= "submit" type="submit" class="submit-button">Submit <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            </form>
+            <div class="col-md-6">
+                <div class="card"><img class="card-img-top img-fluid" src="images/banner-img.png" alt=""></div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="margin-40">Phone number:</h2>
+            <h5 class="margin-50-20">+91&nbsp;9591982101</h5>
+        </div>
+        <div class="row">
+            <h2 class="margin-20">Email id:</h2>
+            <h5 class="margin-30-20">admin@rahivcloudsolutions.com</h5>
+        </div>
+        <div class="row">
+            <h2 class="margin-20">Address:</h2>
+            <h5 class="margin-30-20"> Bengaluru, Karnataka, India</h5>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2748.762188074934!2d77.75967411167503!3d13.01421357363316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae0e3163e607ff%3A0x6835b46a0cdc8cf1!2sAlpine%20Viva%2C%20139%2C%20Whitefield%20-%20Hoskote%20Rd%2C%20Sai%20Gardens%2C%20Seegehalli%2C%20Krishnarajapura%2C%20Bengaluru%2C%20Karnataka%20560067!5e0!3m2!1sen!2sin!4v1624272196798!5m2!1sen!2sin"
+            width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</div>
+<footer class="container-fluid" id="gtco-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <h4>Company</h4>
+                <ul class="nav flex-column company-nav">
+                    <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./blogs.html">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#">FAQ's</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <h4>Courses</h4>
+                <ul class="nav flex-column services-nav">
+                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#aws-courses">Amazon Web Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#gcp-courses">Google Cloud Platform</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#azure-courses">Microsoft Azure</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#behavioral">Behavioral Training</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#soft-skills">Soft Skills Training</a></li>
+                    <li class="nav-item"><a class="nav-link" style="height: 30px;"></a></li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <h4>Services</h4>
+                <ul class="nav flex-column services-nav">
+                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Trainers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Certificate Exam Preparation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Cloud Website Hosting</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h4>Follow Us</h4>
+                <ul class="nav follow-us-nav">
+                    <li class="nav-item"><a class="nav-link pl-0" href="#">
+                        <i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="mailto:admin@rashivcloudsolutions.com">
+                        <i class="fa fa-google" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/company/rashiv-cloud-solutions-pvt-ltd">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <h4><a class="careers-footer" href="./careers.html">Careers</a></h4>
+            </div>
+            <div class="col-4">
+                <h4 class="sv-header">Site Visitor Stats</h4>
+                <div class="sv-top-cover"></div>
+                <ul class="nav follow-us-nav sv-main-element">
+                    <a href="https://info.flagcounter.com/vAHf"><img src="https://s11.flagcounter.com/countxl/vAHf/bg_58D0FC/txt_1D10DE/border_61CAFF/columns_2/maxflags_6/viewers_Site+Visitor+Stats/labels_1/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+                </ul>
+                <div class="sv-bottom-cover"></div>
+            </div>
+            <div class="col-12">
+                <center>
+                <a class="nav-link" href="./t&c.html" >Read the Terms and conditions of usage.</a></p>
+                <p style="color: white;">&copy; <span id="copyright">
+                    <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+                </span> Rashiv Cloud Solutions. All Rights Reserved.</p>
+                </center>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/jquery-3.3.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- owl carousel js-->
+<script src="owl-carousel/owl.carousel.min.js"></script>
+<!-- custom JS -->
+<script src="js/main.js"></script>
+</body>
+</html>
