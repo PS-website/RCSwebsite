@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<form action="/careers" method="POST" id="gtco-form" class="container" autocomplete="on" enctype="multipart/form-data">
+<form action="/careers" method="POST" class="container gtco-form" autocomplete="on" enctype="multipart/form-data">
     <h4 style="margin-top: -100px;"> Please fill in the necessary details: </h4>
     <input name="full_name" type="text" class="form-control" placeholder="Full Name" required>
     <input name="email" type="email" class="form-control" placeholder="Email Address" required>
@@ -84,13 +84,13 @@
         </div>
         <div id="checkboxes">
             <label for="one">
-                <input name="aws" type="checkbox" id="one" />AWS Trainers Part time/ Full time</label>
+                <input name="course" type="checkbox" id="one" value="AWS Trainers Part time/ Full time" />AWS Trainers Part time/ Full time</label>
             <label for="two">
-                <input name="azure" type="checkbox" id="two" />GCP Trainers Part time/ Full time</label>
+                <input name="course" type="checkbox" id="two" value="GCP Trainers Part time/ Full time"/>GCP Trainers Part time/ Full time</label>
             <label for="three">
-                <input name="data_science" type="checkbox" id="three" />Data Science</label>
+                <input name="course" type="checkbox" id="three" value="Data Science"/>Data Science</label>
             <label for="four">
-                <input name="cyber_security" type="checkbox" id="four" />Cyber Security</label>
+                <input name="course" type="checkbox" id="four" value="Cyber Security" />Cyber Security</label>
         </div>
         <div class="resume-row">
             <label for="resume">Attach your resume:</label>
@@ -140,12 +140,6 @@
             <div class="col-4">
                 <h4>Follow Us</h4>
                 <ul class="nav follow-us-nav">
-                    <li class="nav-item"><a class="nav-link pl-0" href="#">
-                        <i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    </li>
                     <li class="nav-item"><a class="nav-link" href="mailto:admin@rashivcloudsolutions.com">
                         <i class="fa fa-google" aria-hidden="true"></i></a>
                     </li>

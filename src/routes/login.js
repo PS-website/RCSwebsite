@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const flash = require('connect-flash');
 const { getMaxListeners } = require('process');
+const passport = require('passport')
 
 
 const Register = require("../models/registerschema")
@@ -18,7 +19,6 @@ router.get('/', (req, res) => {
 const isNotVerified = async function(req,res,next) {
     try {
       const User = await Register.findOne({emailaddress:req.body.email});
-      console.log(User.status);
       if(User.status === false){
         //return next();
         console.log("verify your email");
@@ -43,8 +43,6 @@ router.post("/", isNotVerified, async(req, res) => {
     const userVerification = await Register.findOne({emailaddress : user});
     const comparepassword = await bcrypt.compare(verifypassword,userVerification.password)
     const token = await userVerification.generateAuthToken();
-    console.log("the token is" + token);
-
     if(comparepassword){
 
     console.log('logged in')
@@ -56,6 +54,12 @@ router.post("/", isNotVerified, async(req, res) => {
     res.status(400).send(error);
   }
 
+})
+
+router.get('/google',passport.authenticate('google', {scope: ['profile']}))
+router.get('/google/callback', passport.authenticate('google', { failureRedirect:
+"/"}), (req,res) =>{
+  res.redirect('/home')
 })
 
 module.exports = router;

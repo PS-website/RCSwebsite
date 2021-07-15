@@ -21,8 +21,10 @@ router.get('/', (req, res) => {
 var transporter = nodemailer.createTransport({
     service:'gmail',
     auth:{
-      user:process.env.EMAIL_ID,
-      pass:process.env.PASSWORD
+      //user:process.env.EMAIL_ID,
+      //pass:process.env.PASSWORD
+      user:"parjwalsara@gmail.com",
+      pass:"pnbnuxbzoifxjywg"
     } 
     });
   
@@ -87,7 +89,7 @@ var transporter = nodemailer.createTransport({
               
               var mailOptions = {
                 from: emailadd ,
-                to: process.env.EMAIL_ID,
+                to: "parjwalsara@gmail.com",
                 subject:'RCS testmail',
                 text:'Name:'+ fullname + 
                      'contact:'+ phonenumber + 

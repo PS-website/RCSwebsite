@@ -19,8 +19,10 @@ router.get('/', (req, res) => {
 var transporter = nodemailer.createTransport({
     service:'gmail',
     auth:{
-        user:process.env.EMAIL_ID,
-        pass:process.env.PASSWORD
+        //user:process.env.EMAIL_ID,
+        //pass:process.env.PASSWORD
+        user:"parjwalsara@gmail.com",
+        pass:"pnbnuxbzoifxjywg"
     } 
     });
 
@@ -47,8 +49,7 @@ router.post("/", async (req, res) => {
           to: registerEmail,
           subject:'RCS verification mail',
           
-          html:`<h4>Enter this token to verify</h4>
-          <p>token:${registerUser.confirmationCode}</p>
+          html:`<h4>Verify your account to login</h4>
           <a href= "http://${req.headers.host}/register/verify_email?token=${registerUser.confirmationCode}">click here to verify</a>`
         };
         
@@ -62,7 +63,6 @@ router.post("/", async (req, res) => {
         });
   
         const registered = await registerUser.save();
-  
         console.log("registration successful");
         return res.redirect("/home")
       }else{

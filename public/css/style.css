@@ -219,7 +219,7 @@ body {
   padding-top: 10%;
 }
 
-.gtco-banner-area a, .gtco-feature a, .gtco-features a, .gtco-blogs .owl-carousel .card a, #gtco-form .submit-button {
+.gtco-banner-area a, .gtco-feature a, .gtco-features a, .gtco-blogs .owl-carousel .card a, .gtco-form .submit-button {
   background-image: -moz-linear-gradient(0deg, #06c6f9 0%, #38eaf9 100%);
   background-image: -webkit-linear-gradient(0deg, #06c6f9 0%, #38eaf9 100%);
   background-image: -ms-linear-gradient(0deg, #06c6f9 0%, #38eaf9 100%);
@@ -233,7 +233,7 @@ body {
   padding-right: 5px;
   text-decoration: none !important;
 }
-.gtco-banner-area a .fa, .gtco-feature a .fa, .gtco-features a .fa, .gtco-blogs .owl-carousel .card a .fa, #gtco-form .submit-button .fa {
+.gtco-banner-area a .fa, .gtco-feature a .fa, .gtco-features a .fa, .gtco-blogs .owl-carousel .card a .fa, .gtco-form .submit-button .fa {
   background: #fff;
   border-radius: 50%;
   height: 32px;
@@ -751,7 +751,7 @@ body {
   color: #1d3ede;
   margin-bottom: 30px;
 }
-#gtco-form input.form-control, #gtco-form textarea {
+.gtco-form input.form-control, .gtco-form textarea {
   background-color: white;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.08);
   border-radius: 50px;
@@ -763,12 +763,12 @@ body {
   padding-left: 30px;
   color: #000;
 }
-#gtco-form input.form-control::-webkit-input-placeholder, #gtco-form input.form-control::-moz-placeholder, #gtco-form input.form-control:-ms-input-placeholder, #gtco-form input.form-control:-moz-placeholder, #gtco-footer textarea::-webkit-input-placeholder, #gtco-form textarea::-moz-placeholder, #gtco-form textarea:-ms-input-placeholder, #gtco-form textarea:-moz-placeholder {
+.gtco-form input.form-control::-webkit-input-placeholder, .gtco-form input.form-control::-moz-placeholder, .gtco-form input.form-control:-ms-input-placeholder, .gtco-form input.form-control:-moz-placeholder, #gtco-footer textarea::-webkit-input-placeholder, .gtco-form textarea::-moz-placeholder, .gtco-form textarea:-ms-input-placeholder, .gtco-form textarea:-moz-placeholder {
   color: #999999;
   font-family: "OpenSans-Regular";
   font-size: 18px;
 }
-#gtco-form textarea {
+.gtco-form textarea {
   min-height: 200px;
   border-radius: 30px;
   padding-top: 20px;
@@ -866,14 +866,6 @@ h4.courses-header {
 .owl-item.center {
   transform: scale(1.2);
   opacity: 1 !important;
-}
-.courses-container .item .price-tag {
-  position: absolute;
-  bottom: 37px;
-  text-align: center;
-  font-size: 15px;
-  margin-right: 30px;
-  width: 83%;
 }
 .card.text-center .card-img-top {
   margin-top: 30px;
@@ -1023,6 +1015,11 @@ a.courses-name .pic {
   height: 50%;
   background-color: lightblue;
   border-radius: 60px 0px 0px 0px;
+  text-align: center;
+  line-height: 88px;
+}
+a.courses-name .pic img {
+  height: 80px;
 }
 a.courses-name h2 {
   text-align: center;
@@ -1185,7 +1182,7 @@ footer {
   margin-top:20px;
   margin-bottom: -40px;
 }
-#gtco-form h4{
+.gtco-form h4{
   padding-left: 20px;
   text-align: left;
 }
@@ -1198,17 +1195,20 @@ footer {
 .pass:hover{
   text-decoration: underline;
 }
-.signup_link, .register_link{
+.signup_link, .register_link, .forgot_pass{
   margin: 30px 0;
   font-size: 16px;
   color: #666666;
 
 }
-.signup_link a, .register_link a{
+.signup_link a, .register_link a, .forgot_pass a{
   background: none;
   font-size: 16px;
   color: #2691d9;
   text-decoration: none;
+}
+.forgot_pass a {
+  padding-left: 10px;
 }
 .signup_link a:hover, .register_link a:hover{
   text-decoration: underline;
@@ -1262,4 +1262,13 @@ footer {
 }div#wa-widget-send-button{
   width: 60px;
   height: 60px;
+}
+a.tc_links {
+  background: transparent;
+  color: #666666;
+  text-transform: none;
+  font-family: Opensans-regular;
+  margin: unset;
+  padding: unset;
+  text-decoration: underline !important;
 }

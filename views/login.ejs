@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -61,7 +60,7 @@
 <div class="container-fluid gtco-banner-area">
     <div class="container">
         <div class="row">
-            <form action=""method= "POST" class="col-lg-6" id="gtco-form" autocomplete="on">
+            <form action="" method="POST" class="col-lg-6 gtco-form" autocomplete="on">
                 <img class="rashiv-logo" src="images/rashiv_logo-blue.png" alt="logo"></img>
                 <h4 class="margin-40"> Log In </h4>
                 <input name="email" type="email" class="form-control" placeholder="Email Address" required>
@@ -69,9 +68,9 @@
                     <input name="password" id="password" type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required />
                     <span class="password-toggle"><i class="fa fa-eye-slash" id="eye" onclick="toggleVisibility('password')"></i></span>
                 </div>
-                <div class="pass">Forgot password?</div>
+                <div class="forgot_pass"><a href="./resetpass.html">Forgot password?</a></div>
                 <button id= "submit" type="submit" class="submit-button">Log In<i class="fa fa-angle-right" aria-hidden="true"></i></button>
-                <p> <a href="#" class="submit-button"><img class="glogo" src="images/google_logo.png">Log In with Google <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                <p> <a href="/auth/google" class="submit-button"><img class="glogo" src="images/google_logo.png">Log In with Google <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
                 <div class="signup_link">
                     Don't have an account? <a href="./register.html">Register here</a>
                 </div>
@@ -122,12 +121,6 @@
             <div class="col-4">
                 <h4>Follow Us</h4>
                 <ul class="nav follow-us-nav">
-                    <li class="nav-item"><a class="nav-link pl-0" href="#">
-                        <i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    </li>
                     <li class="nav-item"><a class="nav-link" href="mailto:admin@rashivcloudsolutions.com">
                         <i class="fa fa-google" aria-hidden="true"></i></a>
                     </li>
@@ -162,13 +155,11 @@
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/jquery-3.3.1.slim.min.js"></script>
-<!--<script src="js/jquery-3.3.1.slim.min.js"></script>-->
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- owl carousel js-->
 <script src="owl-carousel/owl.carousel.min.js"></script>
 <!-- custom JS -->
 <script src="js/main.js"></script>
-
 </body>
 </html>
