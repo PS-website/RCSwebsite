@@ -5,7 +5,6 @@ const { getMaxListeners } = require('process');
 const nodemailer = require('nodemailer');
 const multer = require('multer')
 const fs = require('fs')
-const flash = require('connect-flash')
 
 const Careerform = require("../models/careeformschema")
 
@@ -54,7 +53,9 @@ var transporter = nodemailer.createTransport({
  router.post('/', async(req,res) => {
     upload (req,res,function(err){
         if(err){
-            return req.flash('alert-danger','Something went wrong!!Try again..')
+          req.flash('alert-danger','Something went wrong!!Try again..')
+          return res.redirect('/careers')
+            
         }else{
 
             fullname = req.body.full_name,
@@ -93,6 +94,7 @@ var transporter = nodemailer.createTransport({
               transporter.sendMail(mailOptions, function(error, info){
                 if (error) {
                   req.flash('alert-danger','Your form is not submitted.Try again!!')
+                  return res.redirect('/careers')
                 } else {
 
                   req.flash('alert-success','Your application is successfully submitted!!')

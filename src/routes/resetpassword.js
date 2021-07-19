@@ -1,15 +1,11 @@
 require('dotenv').config()
 const express = require('express');
 const router = express.Router();
-const flash = require('connect-flash');
 const { getMaxListeners } = require('process');
 const jwt = require('jsonwebtoken')
 
 const Register = require("../models/registerschema")
 
-router.get('/:id/:token', async(req,res) =>{
-    res.render('resetpassword')
-})
 
 router.get("/:id/:token", async(req,res) =>{
 const {id,token} = req.params
@@ -18,8 +14,9 @@ if(checkid){
     const secret = process.env.JWT_SECRET+checkid.password
     try {
         const payload = jwt.verify(token,secret)
+        console.log(payload)
         req.flash('alert-success','change your password here!!')
-        res.redirect('/resetpassword')
+        res.render('resetpassword')
     } catch (error) {
         res.send(error.message)
     }
@@ -30,9 +27,10 @@ if(checkid){
 })
 
 router.post("/:id/:token", async(req,res) =>{
+    const {id,token} = req.params
     const email = req.body.email;
     const password = req.body.password;
-    const emailcheck = await Register.findOne({emailaddress:email})
+    const emailcheck = await Register.findOne({_id:id})
     if(!emailcheck){
       req.flash('alert-danger',"enter the correct email address!")
       res.render('resetpassword')

@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express  = require('express')
-const mongoose = require('mongoose')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express();
@@ -101,14 +100,9 @@ app.get('/forgotpassword', (req,res) =>{
 
 //static files access
 app.use(express.static(path.join(__dirname,"./public")))
-app.use(express.static(path.join(__dirname,"./public/css")))
-app.use(express.static(path.join(__dirname,"./public/js")))
-app.use(express.static(path.join(__dirname,"./public/fonts")))
-app.use(express.static(path.join(__dirname,"./public/images")))
-app.use(express.static(path.join(__dirname,"./public/owl-carousel")))
 
 
 //server connection
-app.listen(8080, () =>{
+app.listen(process.env.PORT, () =>{
     console.log('server is running')
 })

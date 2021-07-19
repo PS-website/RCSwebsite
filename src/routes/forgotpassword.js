@@ -1,8 +1,6 @@
 require('dotenv').config()
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const flash = require('connect-flash');
 const { getMaxListeners } = require('process');
 const nodemailer = require('nodemailer')
 const jwt = require('jsonwebtoken')
@@ -38,14 +36,14 @@ router.post("/", async(req,res)=>{
           id:checkUser.id
         }
   
-        const token = jwt.sign(payload, secret, {expiresIn:'10m'})
+        const token = jwt.sign(payload, secret, {expiresIn:'5m'})
         const otpMail = {
           from: 'parjwalsara@gmail.com' ,
           to: user,
           subject:'Password reset',
           
           html:`<h2>Link to resetpassword</h2>
-                <h3>Click on below link to reset your password. This link is valid only for 10 minutes.</h3>
+                <h4>Click on below link to reset your password. This link is valid only for 5 minutes.</h4>
                 <a href= "http://${req.headers.host}/resetpassword/${checkUser.id}/${token}">click here to change password</a>`
         };
 
@@ -53,6 +51,7 @@ router.post("/", async(req,res)=>{
             if (error) {
               console.log(error);
               req.flash('alert-danger','Something went wrong. Try again!!')
+              return res.render('forgotpassword')
             } else {
               req.flash('alert-success','reset link has been sent.Check your mail!!')
               res.redirect('/login')
@@ -60,10 +59,12 @@ router.post("/", async(req,res)=>{
           });
         }else{
           req.flash('alert-danger','Enter the registered email!!')
+          return res.render('forgotpassword')
         }
      } catch (error) {
         console.log(error)
         req.flash('alert-danger','Something went wrong. Try again!!')
+        return res.render('forgotpassword')
     }
 })
 

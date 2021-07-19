@@ -80,7 +80,6 @@ router.post("/", async (req, res) => {
   }) 
 
   router.get('/verify_email', async(req,res, next) =>{
-    //generatedToken = req.body.token
     const accountVerification = await Register.findOne({confirmationCode:req.query.token});
     if(!accountVerification){
       req.flash('alert-danger','Invalid link')

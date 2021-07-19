@@ -3,7 +3,6 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const router = express.Router();
 const { getMaxListeners } = require('process');
-const flash = require('connect-flash')
 
 const Contactform = require("../models/contactformschema")
 
@@ -51,6 +50,7 @@ router.post('/', (req,res) => {
               transporter.sendMail(mailOptions, function(error, info){
                 if (error) {
                   req.flash('alert-danger','Your form is not submitted.Try again!!')
+                  return res.redirect('/contactUs')
                 } else {
 
                   req.flash('alert-success','submitted successfully!You will be contacted soon!!')
