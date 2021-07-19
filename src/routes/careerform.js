@@ -5,6 +5,7 @@ const { getMaxListeners } = require('process');
 const nodemailer = require('nodemailer');
 const multer = require('multer')
 const fs = require('fs')
+const flash = require('connect-flash')
 
 const Careerform = require("../models/careeformschema")
 
@@ -53,8 +54,7 @@ var transporter = nodemailer.createTransport({
  router.post('/', async(req,res) => {
     upload (req,res,function(err){
         if(err){
-            console.log(err)
-            return res.end("Something went wrong!");
+            return req.flash('alert-danger','Something went wrong!!Try again..')
         }else{
 
             fullname = req.body.full_name,
@@ -64,33 +64,21 @@ var transporter = nodemailer.createTransport({
             messageinfo = req.body.message,
             filepath = req.file.path,
             emailmessage = `
-            <h4>You have new request!!</h4>
-            <h3>contact details</h3>
+            <h2>New application!!</h2>
+            <h3>Details:</h3>
             <ul>
               <li>Name:${fullname}</li>
               <li>email:${emailadd}</li>
               <li>phone:${phonenumber}</li>
-              <li>Applied for vacancy in:${vacancyIn}</li>
+              <li>Applied for:${vacancyIn}</li>
             </ul>
             <h4>Message</h4>
             <p>${messageinfo}</p>`
   
-            const vacancyRequests = new Careerform ({
-              fullname: fullname,
-              Contactnumber: phonenumber,
-              contactEmail: emailadd,
-              coursetype: vacancyIn,
-              messageAdded: messageinfo,
-            })
-            const dataentered = vacancyRequests.save();
-  
-            console.log("request successful");
-  
-              
               var mailOptions = {
-                from: emailadd ,
+                from: emailadd,
                 to: "parjwalsara@gmail.com",
-                subject:'RCS testmail',
+                subject:'Application for trainer vacancy',
                 text:'Name:'+ fullname + 
                      'contact:'+ phonenumber + 
                     'message:'+ messageinfo,
@@ -104,12 +92,22 @@ var transporter = nodemailer.createTransport({
               
               transporter.sendMail(mailOptions, function(error, info){
                 if (error) {
-                  console.log(error);
+                  req.flash('alert-danger','Your form is not submitted.Try again!!')
                 } else {
-                  console.log('Email sent: ' + info.response);
+
+                  req.flash('alert-success','Your application is successfully submitted!!')
+                  const vacancyRequests = new Careerform ({
+                    fullname: fullname,
+                    Contactnumber: phonenumber,
+                    contactEmail: emailadd,
+                    coursetype: vacancyIn,
+                    messageAdded: messageinfo,
+                  })
+                  const dataentered = vacancyRequests.save();
+
                   fs.unlink(filepath,function(err){
                     if(err){
-                        return res.end(err)
+                        return console.log(err)
                     }else{
                         console.log("deleted")
                         return res.render('careers')

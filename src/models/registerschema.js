@@ -2,6 +2,7 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const flash = require('connect-flash')
 
 const registerSchema = new mongoose.Schema({
 firstname : {
@@ -26,7 +27,6 @@ status: {
   },
 confirmationCode: { 
     type: String, 
-    unique: true
  },
  tokens:[{
     token:{
@@ -45,7 +45,7 @@ registerSchema.methods.generateAuthToken = async function(){
         await this.save();
         return generatedtoken;
     } catch (error) {
-        console.log('error');
+        req.flash('alert-danger','Something went wrong!!Try again..')
     }
 }
 

@@ -245,22 +245,13 @@ s.onload = function() {
 var x = document.getElementsByTagName('script')[0];
 x.parentNode.insertBefore(s, x);
 
-// Reset password send OTP
-function sendOTP() {
-    var email = document.getElementById('reg_email').value;
-    fetch("#", // TODO: Once the website is hosted, below url needs to be changed
-    {
-        method: 'post',
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        },
-        body: {"email": email}
-    }).then(function (data) {
-        $(".gtco-form#1").css("display", "none");
-        document.getElementById('regemail').value = email;
-        $('#regemail').css("background-color", "lightblue");
-        $(".gtco-form#2").css("display", "block");
-    }).catch(function (error) {
-        alert('Unable to make contact with server', error);
-    });
+
+var closebtns = document.getElementsByClassName("close");
+var i;
+
+/* Loop through the elements, and hide the parent, when clicked on */
+for (i = 0; i < closebtns.length; i++) {
+  closebtns[i].addEventListener("click", function() {
+    this.parentNode.style.display = 'none';
+  });
 }

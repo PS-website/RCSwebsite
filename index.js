@@ -12,6 +12,8 @@ const contactroute = require('./src/routes/contactform')
 const registerroute = require('./src/routes/registration')
 const loginroute = require('./src/routes/login')
 const googleauthroute = require('./src/routes/auth')
+const forgotpassroute = require('./src/routes/forgotpassword')
+const resetpassroute = require('./src/routes/resetpassword')
 
 require('./src/database/connect')
 
@@ -23,24 +25,26 @@ app.use(bodyParser.urlencoded({
     extended:true
 }))
 
-
 //express-session middleware
 app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge:1000*60*60*24
+    }
   }))
 
 //passport middleware
   app.use(passport.initialize())
   app.use(passport.session())
-/*
+
 //connect-flash middleware
-app.use(require('connect-flash')());
+app.use(flash());
 app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
   next();
-});*/
+});
 
 //routers
 app.use('/careers', careerroute)
@@ -48,9 +52,13 @@ app.use('/contactUs', contactroute)
 app.use('/register', registerroute)
 app.use('/login', loginroute)
 app.use('/auth', googleauthroute)
+app.use('/forgotpassword', forgotpassroute)
+app.use('/resetpassword', resetpassroute)
 
 
+//renders
 app.set('view engine', 'ejs')
+
 app.get('', (req,res)=>{
     res.render('index')
 })
@@ -87,8 +95,20 @@ app.get('/t&c', (req,res)=>{
     res.render('t&c')
 })
 
-app.use(express.static(path.join(__dirname,"./public")))
+app.get('/forgotpassword', (req,res) =>{
+    res.render('forgotpassword')
+})
 
+//static files access
+app.use(express.static(path.join(__dirname,"./public")))
+app.use(express.static(path.join(__dirname,"./public/css")))
+app.use(express.static(path.join(__dirname,"./public/js")))
+app.use(express.static(path.join(__dirname,"./public/fonts")))
+app.use(express.static(path.join(__dirname,"./public/images")))
+app.use(express.static(path.join(__dirname,"./public/owl-carousel")))
+
+
+//server connection
 app.listen(8080, () =>{
     console.log('server is running')
 })

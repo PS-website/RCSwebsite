@@ -2,14 +2,10 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const otpGenerator = require('otp-generator');
-const bcrypt = require('bcrypt');
 const { getMaxListeners } = require('process');
 const nodemailer = require('nodemailer');
 
-
 const Register = require("../models/registerschema");
-const register = require('../models/registerschema');
-
 
 router.get('/', (req, res) => {
     res.render('register')
@@ -40,7 +36,7 @@ router.post("/", async (req, res) => {
           status:false
         })
 
-        const checkUser = await register.findOne({emailaddress:registerUser.emailaddress});
+        const checkUser = await Register.findOne({emailaddress:registerUser.emailaddress});
         if(!checkUser){
         const token = await registerUser.generateAuthToken();
   
@@ -49,24 +45,32 @@ router.post("/", async (req, res) => {
           to: registerEmail,
           subject:'RCS verification mail',
           
-          html:`<h4>Verify your account to login</h4>
+          html:`
+          <h4>Welcome to RCS</h4>
+          <h4>Thanks for registering</h4>
+          <h4>Verify your account to login</h4>
           <a href= "http://${req.headers.host}/register/verify_email?token=${registerUser.confirmationCode}">click here to verify</a>`
         };
         
-        
+        const registered = await registerUser.save();
+        if(!registered){
+          req.flash('alert-danger','Something went wrong.Try again!!')
+          return res.redirect('/register')
+        }
         transporter.sendMail(verificationMail, function(error, info){
           if (error) {
             console.log(error);
+            req.flash('alert-danger','something went wrong. Try again!')
+            res.redirect('/register')
           } else {
-            console.log('Email sent: ' + info.response);
+            req.flash('alert-success','Registered.Verification link has been sent!!')
+            return res.redirect("/login")
           }
         });
   
-        const registered = await registerUser.save();
-        console.log("registration successful");
-        return res.redirect("/home")
       }else{
-        res.send('user already exists')
+        req.flash('alert-danger','User already exists!!')
+        res.render('register')
       }
   
     } catch (error) {
@@ -79,13 +83,14 @@ router.post("/", async (req, res) => {
     //generatedToken = req.body.token
     const accountVerification = await Register.findOne({confirmationCode:req.query.token});
     if(!accountVerification){
-      res.send("invalid token")
+      req.flash('alert-danger','Invalid link')
+      res.redirect('/register')
     }else{
       accountVerification.status = true,
-      accountVerification.confirmationCode=null
+      accountVerification.confirmationCode=accountVerification.id
       await accountVerification.save();
-      console.log("successfully verified");
-      return res.redirect('http://localhost:8080/login')
+      req.flash('alert-success','successfully verified!!')
+      return res.redirect('/login')
     }
   })
 

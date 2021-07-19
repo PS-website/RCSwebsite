@@ -3,6 +3,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const router = express.Router();
 const { getMaxListeners } = require('process');
+const flash = require('connect-flash')
 
 const Contactform = require("../models/contactformschema")
 
@@ -13,8 +14,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req,res) => {
     const emailmessage = `
-    <p>You have a new contact request</p>
-    <h3>Contact Details</h3>
+    <h2>New contact request!!</h2>
+    <h3>Contact Details:</h3>
     <ul>  
       <li>Name: ${req.body.full_name}</li>
       <li>Email: ${req.body.email}</li>
@@ -36,17 +37,6 @@ router.post('/', (req,res) => {
         } 
         });
 
-        const contactRequests = new Contactform ({
-            fullname: req.body.full_name,
-            contactnumber: req.body.phone,
-            contactEmail: req.body.email,
-            coursetype: req.body.course,
-            messageAdded: req.body.message,
-          })
-          const dataentered = contactRequests.save();
-
-          console.log("request successful");
-    
     const mailOptions = {
         from: req.body.email ,
         to: "parjwalsara@gmail.com",
@@ -60,9 +50,20 @@ router.post('/', (req,res) => {
 
               transporter.sendMail(mailOptions, function(error, info){
                 if (error) {
-                  console.log(error);
+                  req.flash('alert-danger','Your form is not submitted.Try again!!')
                 } else {
-                  console.log('Email sent: ' + info.response);
+
+                  req.flash('alert-success','submitted successfully!You will be contacted soon!!')
+
+                  const contactRequests = new Contactform ({
+                    fullname: req.body.full_name,
+                    contactnumber: req.body.phone,
+                    contactEmail: req.body.email,
+                    coursetype: req.body.course,
+                    messageAdded: req.body.message,
+                  })
+                  const dataentered = contactRequests.save();
+        
                   res.render('contact')
                 }
               });

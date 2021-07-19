@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="owl-carousel/assets/owl.carousel.min.css" type="text/css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <!-- custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <title>Rashiv Cloud Solutions</title>
@@ -23,35 +24,35 @@
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <img class="rashiv-nav-logo" src="images/rashiv_logo-blue.png" alt="logo"></img>
-                <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="./home">Home</a></li>
                 <div class="gtco-navbar" id="gtco-navbar">
                     <div class="gtco-dropdown" id="gtco-dropdown">
-                        <li class="nav-item"><a class="nav-link gtco-dropbtn" href="./courseslist.html">Courses<i class="fa fa-caret-down"></i></a></li>
+                        <li class="nav-item"><a class="nav-link gtco-dropbtn" href="./courses">Courses<i class="fa fa-caret-down"></i></a></li>
                         <div class="gtco-dropdown-content">
                             <div class="gtco-header row">
                                 <h5>Our Courses</h5>
                             </div>
                             <div class="gtco-column row">
                                 <ul>
-                                    <li><a href="./courseslist.html#aws-courses">Amazon Web Services</a></li>
-                                    <li><a href="./courseslist.html#gcp-courses">Google Cloud Platform</a></li>
-                                    <li><a href="./courseslist.html#azure-courses">Microsoft Azure</a></li>
-                                    <li><a href="./courseslist.html#behavioral">Behavioral Training</a></li>
-                                    <li><a href="./courseslist.html#soft-skills">Soft Skills Training</a></li>
+                                    <li><a href="./courses#aws-courses">Amazon Web Services</a></li>
+                                    <li><a href="./courses#gcp-courses">Google Cloud Platform</a></li>
+                                    <li><a href="./courses#azure-courses">Microsoft Azure</a></li>
+                                    <li><a href="./courses#behavioral">Behavioral Training</a></li>
+                                    <li><a href="./courses#soft-skills">Soft Skills Training</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <li class="nav-item"><a class="nav-link" href="./index.html#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="./index.html#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="./blogs.html">Blogs</a></li>
-                <li class="nav-item"><a class="nav-link" href="./careers.html">Careers</a></li>
-                <li class="nav-item"><a class="nav-link" href="./contact.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="./home#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="./home#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="./blogs">Blogs</a></li>
+                <li class="nav-item"><a class="nav-link" href="./careers">Careers</a></li>
+                <li class="nav-item"><a class="nav-link" href="./contactUs">Contact Us</a></li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <a href="./login.html" class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">login</a>
-                <a href="./register.html" class="btn btn-info my-2 my-sm-0 text-uppercase text-dark">sign up</a>
+                <a href="./login" class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">login</a>
+                <a href="./register" class="btn btn-info my-2 my-sm-0 text-uppercase text-dark">sign up</a>
             </form>
         </div>
     </div>
@@ -61,6 +62,11 @@
         <div class="row">
             <div class="col-md-6">
                 <img class="rashiv-logo" src="images/rashiv_logo-blue.png" alt="logo"></img>
+                <div>
+
+                    <%- messages('message',locals) %>
+
+                </div>
                 <p>We have vacancies for trainers having expertise in the fields of AWS, GCP, Data Science or Cyber Security. To apply fill in the form below.</p>
             </div>
             <div class="col-md-6">
@@ -107,32 +113,32 @@
             <div class="col-4">
                 <h4>Company</h4>
                 <ul class="nav flex-column company-nav">
-                    <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./index.html#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./blogs.html">Blogs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./index.html#">FAQ's</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./home#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./home#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./blogs">Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./home#">FAQ's</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contactUs">Contact</a></li>
                 </ul>
             </div>
             <div class="col-4">
                 <h4>Courses</h4>
                 <ul class="nav flex-column services-nav">
-                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#aws-courses">Amazon Web Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#gcp-courses">Google Cloud Platform</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#azure-courses">Microsoft Azure</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#behavioral">Behavioral Training</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./courseslist.html#soft-skills">Soft Skills Training</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courses#aws-courses">Amazon Web Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courses#gcp-courses">Google Cloud Platform</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courses#azure-courses">Microsoft Azure</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courses#behavioral">Behavioral Training</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./courses#soft-skills">Soft Skills Training</a></li>
                     <li class="nav-item"><a class="nav-link" style="height: 30px;"></a></li>
                 </ul>
             </div>
             <div class="col-4">
                 <h4>Services</h4>
                 <ul class="nav flex-column services-nav">
-                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Trainers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Certificate Exam Preparation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./index.html#services">Cloud Website Hosting</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./home#services">Trainers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./home#services">Certificate Exam Preparation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./home#services">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./home#services">Cloud Website Hosting</a></li>
                 </ul>
             </div>
         </div>
@@ -149,7 +155,7 @@
                 </ul>
             </div>
             <div class="col-4">
-                <h4><a class="careers-footer" href="./careers.html">Careers</a></h4>
+                <h4><a class="careers-footer" href="./careers">Careers</a></h4>
             </div>
             <div class="col-4">
                 <h4 class="sv-header">Site Visitor Stats</h4>
@@ -161,7 +167,7 @@
             </div>
             <div class="col-12">
                 <center>
-                <a class="nav-link" href="./t&c.html" >Read the Terms and conditions of usage.</a></p>
+                <a class="nav-link" href="./t&c" >Read the Terms and conditions of usage.</a></p>
                 <p style="color: white;">&copy; <span id="copyright">
                     <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
                 </span> Rashiv Cloud Solutions. All Rights Reserved.</p>

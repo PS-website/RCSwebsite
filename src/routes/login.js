@@ -21,16 +21,15 @@ const isNotVerified = async function(req,res,next) {
       const User = await Register.findOne({emailaddress:req.body.email});
       if(User.status === false){
         //return next();
-        console.log("verify your email");
-        res.send("verify your account");
+        req.flash('alert-danger','Verify your account.Check mail!!')
+        res.render('login')
       }else{
         //console.log("verify your email");
         return next();
       }
       
     } catch (error) {
-      res.status(400).send(error);
-      console.log(error)
+      res.status(400).send(error.message);
     }
   }
 
@@ -46,12 +45,15 @@ router.post("/", isNotVerified, async(req, res) => {
     if(comparepassword){
 
     console.log('logged in')
-    return res.redirect('http://localhost:8080')
+    req.flash('alert-success','logged in')
+    return res.redirect('/login')
     }else{
-    res.send("invalid")
+    //res.send("invalid")
+    req.flash('alert-danger','wrong password!!')
+    res.redirect('/login')
     }
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send(error.message);
   }
 
 })
