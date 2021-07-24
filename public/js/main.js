@@ -229,14 +229,14 @@ var options = {
 "brandSetting":{
     "brandName":"Rashiv Cloud Solution",
     "brandSubTitle":"Typically replies within a day",
-    "brandImg":"images/rcs_logo_whatsapp.jpeg",
+    "brandImg":"/images/rcs_logo_whatsapp.jpeg",
     "welcomeText":"Hi there!\nHow can I help you?",
     "messageText":"Hello, I have a question about ",
     "backgroundColor":"#078df2",
     "ctaText":"Start Chat",
     "borderRadius":"25",
     "autoShow":false,
-    "phoneNumber":"919900176030"
+    "phoneNumber":"+918452962692"
 }
 };
 s.onload = function() {
@@ -254,4 +254,8 @@ for (i = 0; i < closebtns.length; i++) {
   closebtns[i].addEventListener("click", function() {
     this.parentNode.style.display = 'none';
   });
+}
+
+function contactUs() {
+    alert("Please Contact us using the whatsapp widget or Contact us page to know more details about the course.");
 }

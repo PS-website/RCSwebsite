@@ -14,7 +14,6 @@ if(checkid){
     const secret = process.env.JWT_SECRET+checkid.password
     try {
         const payload = jwt.verify(token,secret)
-        console.log(payload)
         req.flash('alert-success','change your password here!!')
         res.render('resetpassword')
     } catch (error) {

@@ -18,6 +18,10 @@ router.get('/', (req, res) => {
 const isNotVerified = async function(req,res,next) {
     try {
       const User = await Register.findOne({emailaddress:req.body.email});
+      if(!User){
+        req.flash('alert-danger','You are not registered! Register first!!')
+        res.redirect('/register')
+      }
       if(User.status === false){
         req.flash('alert-danger','Verify your account.Check mail!!')
         res.render('login')
@@ -38,10 +42,16 @@ router.post("/", isNotVerified, async(req, res) => {
     verifypassword = req.body.password
     const userVerification = await Register.findOne({emailaddress : user});
     const comparepassword = await bcrypt.compare(verifypassword,userVerification.password)
-    const token = await userVerification.generateAuthToken();
     if(comparepassword){
+      const token = await userVerification.generateAuthToken();
+      
+      res.cookie('mycookie',token, {
+        expires: new Date(Date.now()+ 120000),
+        httpOnly:true
+      });
+
     req.flash('alert-success','logged in')
-    return res.redirect('/login')
+    return res.redirect('/profile')
     }else{
     req.flash('alert-danger','wrong password!!')
     res.redirect('/login')

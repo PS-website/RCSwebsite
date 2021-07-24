@@ -15,10 +15,8 @@ router.get('/', (req, res) => {
 var transporter = nodemailer.createTransport({
     service:'gmail',
     auth:{
-        //user:process.env.EMAIL_ID,
-        //pass:process.env.PASSWORD
-        user:"parjwalsara@gmail.com",
-        pass:"pnbnuxbzoifxjywg"
+        user:process.env.EMAIL_ID,
+        pass:process.env.PASSWORD
     } 
     });
 
@@ -39,9 +37,13 @@ router.post("/", async (req, res) => {
         const checkUser = await Register.findOne({emailaddress:registerUser.emailaddress});
         if(!checkUser){
         const token = await registerUser.generateAuthToken();
+        res.cookie('mycookie',token, {
+          expires: new Date(Date.now()+ 120000),
+          httpOnly:true
+        });
   
         const verificationMail = {
-          from: 'parjwalsara@gmail.com' ,
+          from: 'rashivcloudsolutions@gmail.com' ,
           to: registerEmail,
           subject:'RCS verification mail',
           
@@ -49,7 +51,7 @@ router.post("/", async (req, res) => {
           <h4>Welcome to RCS</h4>
           <h4>Thanks for registering</h4>
           <h4>Verify your account to login</h4>
-          <a href= "http://${req.headers.host}/register/verify_email?token=${registerUser.confirmationCode}">click here to verify</a>`
+          <a href= "http://${req.headers.host}/register/verify_email?token=${registerUser.confirmationCode}">Verify here</a>`
         };
         
         const registered = await registerUser.save();

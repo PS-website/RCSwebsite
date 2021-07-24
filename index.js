@@ -6,6 +6,8 @@ const app = express();
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
+const cookieparser = require('cookie-parser')
+
 const careerroute = require('./src/routes/careerform')
 const contactroute = require('./src/routes/contactform')
 const registerroute = require('./src/routes/registration')
@@ -13,6 +15,11 @@ const loginroute = require('./src/routes/login')
 const googleauthroute = require('./src/routes/auth')
 const forgotpassroute = require('./src/routes/forgotpassword')
 const resetpassroute = require('./src/routes/resetpassword')
+const cookieverify = require('./src/routes/cookieverify')
+const logoutroute = require('./src/routes/logout')
+const profileroute = require('./src/routes/profile')
+
+const PORT = process.env.PORT||8080;
 
 require('./src/database/connect')
 
@@ -24,6 +31,8 @@ app.use(bodyParser.urlencoded({
     extended:true
 }))
 
+//cookie-parser middleware
+app.use(cookieparser());
 //express-session middleware
 app.use(session({
     secret: 'secret',
@@ -45,7 +54,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-//routers
+//routes
 app.use('/careers', careerroute)
 app.use('/contactUs', contactroute)
 app.use('/register', registerroute)
@@ -53,6 +62,8 @@ app.use('/login', loginroute)
 app.use('/auth', googleauthroute)
 app.use('/forgotpassword', forgotpassroute)
 app.use('/resetpassword', resetpassroute)
+app.use('/logout', logoutroute)
+app.use('/profile', profileroute)
 
 
 //renders
@@ -98,11 +109,12 @@ app.get('/forgotpassword', (req,res) =>{
     res.render('forgotpassword')
 })
 
+
 //static files access
 app.use(express.static(path.join(__dirname,"./public")))
 
 
 //server connection
-app.listen(process.env.PORT, () =>{
+app.listen(PORT, () =>{
     console.log('server is running')
 })

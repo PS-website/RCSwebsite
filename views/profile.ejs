@@ -1,9 +1,12 @@
+<!-- This is a template html page considering necessary header and footer to be present in every page. -->
 <!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
 
     <!-- awesone fonts css-->
     <link href="/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -51,52 +54,40 @@
                 <li class="nav-item"><a class="nav-link" href="/contactUs">Contact Us</a></li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <a href="/login" class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">login</a>
-                <a href="/register" class="btn btn-info my-2 my-sm-0 text-uppercase text-dark">sign up</a>
+                <a href="/logout" class="logout">Logout</a>
             </form>
         </div>
     </div>
 </nav>
 
-<div class="container-fluid gtco-banner-area">
-    <div class="container">
-        <div class="row">
+<div class="profile-box">
+    <div>
 
-            <form action="" method="POST" class="col-lg-6 gtco-form" id="2" autocomplete="on">
-                <img class="rashiv-logo" src="/images/rashiv_logo-blue.png" alt="logo"></img>
-                <div>
-
-                    <%- messages('message',locals) %>
-
-                </div>
-                <h4 class="margin-40">Reset Password..</h4>
-                <div class="inline-row">
-                    <input name="password" id="password" type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required />
-                    <span class="password-toggle"><i class="fa fa-eye-slash" id="eye" onclick="toggleVisibility('password')"></i></span>
-                </div>
-                <div class="inline-row">
-                    <input name="confirm_password" id="confirm_password" type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Confirm Password" required />
-                    <span class="password-toggle"><i class="fa fa-eye-slash" id="eye" onclick="toggleVisibility('confirm_password')"></i></span>
-                </div>
-                <div id="pass_validation">
-                    <h5>Password must contain the following:</h5>
-                    <p class="password invalid" id="letter">A <b>lowercase</b> letter</p>
-                    <p class="password invalid" id="capital">A <b>capital (uppercase)</b> letter</p>
-                    <p class="password invalid" id="number">A <b>number</b></p>
-                    <p class="password invalid" id="length">Minimum <b>8 characters</b></p>
-                </div>
-                <button id= "submit" type="submit" class="submit-button">Reset Password<i class="fa fa-angle-right" aria-hidden="true"></i></button>
-                <p> <a href="/auth/google" class="submit-button"><img class="glogo" src="/images/google_logo.png">Log In with Google <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
-                <div class="signup_link">
-                    Don't have an account? <a href="/register">Register here</a>
-                </div>
-            </form>
-            <div class="col-md-6">
-                <div class="card"><img class="card-img-top img-fluid" src="/images/banner-img.png" alt=""></div>
-            </div>
-        </div>
+        <%- messages('message',locals) %>
+    
     </div>
+    <div class="givendetails">
+       <div class="profilename">
+         <h1>Profile</h1>
+       </div>
+        <div>
+           <table>
+               <tr>
+                   <td><h4>Name</h4></td>
+                   <td><h1>:</h1></td>
+                   <td><h5><%=name%></h5></td>
+               </tr>
+               <tr>
+                   <td><h4>Email</h4></td>
+                   <td><h1>:</h1></td>
+                   <td><h5><%=email%></h5></td>
+               </tr>
+           </table>
+        </div>
+    </div>      
 </div>
+
+<!-- The content goes here -->
 
 <footer class="container-fluid" id="gtco-footer">
     <div class="container">

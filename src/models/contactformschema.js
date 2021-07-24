@@ -24,6 +24,6 @@ messageAdded: {
 
 // creating collection
 
-const contactform = new mongoose.model("contactrequestdata", contactSchema)
+const contactform = new mongoose.model("contact_requests", contactSchema)
 
 module.exports = contactform;

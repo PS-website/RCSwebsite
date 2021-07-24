@@ -28,4 +28,4 @@ image: {
 
 })
 
-module.exports = mongoose.model('Googleuser',googleauthSchema)
+module.exports = mongoose.model('Google_users',googleauthSchema)

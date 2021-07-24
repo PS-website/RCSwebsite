@@ -15,10 +15,8 @@ router.get('/', (req, res) => {
 const transporter = nodemailer.createTransport({
     service:'gmail',
     auth:{
-      //user:process.env.EMAIL_ID,
-      //pass:process.env.PASSWORD
-      user:"parjwalsara@gmail.com",
-      pass:"pnbnuxbzoifxjywg"
+      user:process.env.EMAIL_ID,
+      pass:process.env.PASSWORD
     } 
     });
 
@@ -38,13 +36,13 @@ router.post("/", async(req,res)=>{
   
         const token = jwt.sign(payload, secret, {expiresIn:'5m'})
         const otpMail = {
-          from: 'parjwalsara@gmail.com' ,
+          from: 'rashivcloudsolutions@gmail.com' ,
           to: user,
           subject:'Password reset',
           
-          html:`<h2>Link to resetpassword</h2>
-                <h4>Click on below link to reset your password. This link is valid only for 5 minutes.</h4>
-                <a href= "http://${req.headers.host}/resetpassword/${checkUser.id}/${token}">click here to change password</a>`
+          html:`<h2>Link to Reset Password</h2>
+                <h4> This is the link to reset your password. It is valid for 5 minutes.</h4>
+                <a href= "http://${req.headers.host}/resetpassword/${checkUser.id}/${token}">Reset Password here</a>`
         };
 
         transporter.sendMail(otpMail, function(error, info){

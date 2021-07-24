@@ -1,6 +1,7 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose')
 const express = require('express')
+const jwt = require('jsonwebtoken')
 const Googleuser = require('../models/googlesigninschema')
 
 module.exports = function(passport) {
@@ -28,7 +29,7 @@ module.exports = function(passport) {
                 done(null,user)
             }
         } catch (error) {
-            res.status(400).send(error.message)
+            console.log(error.message)
         }
     }))
 

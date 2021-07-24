@@ -20,7 +20,7 @@ emailaddress: {
 },
 password : {
     type:String,
-    required:true
+    required:true,
 },
 status: {
     type: Boolean
@@ -46,6 +46,7 @@ registerSchema.methods.generateAuthToken = async function(){
         return generatedtoken;
     } catch (error) {
         req.flash('alert-danger','Something went wrong!!Try again..')
+        return res.redirect('/home')
     }
 }
 
@@ -59,6 +60,6 @@ registerSchema.pre("save",async function(next){
 
 // creating collection
 
-const register = new mongoose.model("registerdata", registerSchema)
+const register = new mongoose.model("User_data", registerSchema)
 
 module.exports = register;

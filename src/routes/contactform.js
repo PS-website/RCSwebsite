@@ -29,16 +29,14 @@ router.post('/', (req,res) => {
     const transporter = nodemailer.createTransport({
         service:'gmail',
         auth:{
-          //user:process.env.EMAIL_ID,
-          //pass:process.env.PASSWORD
-          user:"parjwalsara@gmail.com",
-          pass:"pnbnuxbzoifxjywg"
+          user:process.env.EMAIL_ID,
+          pass:process.env.PASSWORD
         } 
         });
 
     const mailOptions = {
         from: req.body.email ,
-        to: "parjwalsara@gmail.com",
+        to: "admin@rashivcloudsolutions.com",
         subject:"Contactform request!!",
         text:'Name:'+ req.body.full_name + 
             'contact:'+ req.body.phone + 
@@ -50,6 +48,7 @@ router.post('/', (req,res) => {
               transporter.sendMail(mailOptions, function(error, info){
                 if (error) {
                   req.flash('alert-danger','Your form is not submitted.Try again!!')
+                  console.log(error)
                   return res.redirect('/contactUs')
                 } else {
 

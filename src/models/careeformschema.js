@@ -24,6 +24,6 @@ messageAdded: {
 
 // creating collection
 
-const careerform = new mongoose.model("vacancydata", careerSchema)
+const careerform = new mongoose.model("career_applications", careerSchema)
 
 module.exports = careerform;
